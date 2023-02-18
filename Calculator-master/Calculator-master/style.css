@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@600&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Cabin', sans-serif;
+}
+
+:root {
+    --calculator-bg-color: rgb(255, 255, 255);
+    --operator-bg-color: #000000d2;
+    --operator-txt-color: rgb(255, 255, 255);
+    --num-bg-color: #ffffffbd;
+    --num-txt-color: #000;
+    --equl-bg-color: #fec820;
+    --equl-bg-color-d: #f0bb1e;
+    --main-border: #eee;
+    
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--operator-txt-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--equl-bg-color);
+    border-radius: 25px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--equl-bg-color-d);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+.image {
+    background: url(img/bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+.calculator {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+    width: 400px;
+    background-color: var(--calculator-bg-color);
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 200px 400px;
+    grid-template-areas: "screen screen screen screen" "buttons buttons buttons buttons";
+    -webkit-transform: translate(-50%, -50%) scale(1.2);
+    -moz-transform: translate(-50%, -50%) scale(1.2);
+    -ms-transform: translate(-50%, -50%) scale(1.2);
+    -o-transform: translate(-50%, -50%) scale(1.2);
+    padding: 10px;
+    box-shadow: 0px 0px 15px 3px rgba(198, 221, 249, 0.38);
+
+}
+
+.calculator .screen {
+    position: relative;
+    grid-area: screen;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 5px 20px 20px;
+    width: 100%;
+    font-size: 35px;
+    overflow: auto;
+    font-family: Menlo, Monaco, "Courier New", Courier, monospace;
+    font-weight: bold;
+    background: #ffffff;
+    border-radius: 33px;
+    box-shadow: 0px 0px 15px 3px rgba(198, 221, 249, 0.38);
+    margin: 1px;
+}
+
+
+.calculator .screen .result {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 45px;
+}
+
+.calculator .buttons {
+    grid-area: buttons;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: " c c ÷ × " " seven eight nine plus " " four five six min " " one two three equal " " zero zero dot equal ";
+}
+
+.calculator .buttons .C {
+    grid-area: c;
+    /* border-top-left-radius: 20px; */
+    background-color: var(--operator-bg-color);
+    color: var(--operator-txt-color);
+}
+
+.calculator .buttons .del {
+    grid-area: del;
+}
+
+.calculator .buttons .÷ {
+    grid-area: ÷;
+}
+
+.calculator .buttons .dot {
+    grid-area: dot;
+}
+
+.calculator .buttons .× {
+    grid-area: ×;
+    /* border-top-right-radius: 20px; */
+}
+
+
+.calculator .buttons .seven {
+    grid-area: seven;
+}
+
+.calculator .buttons .eight {
+    grid-area: eight;
+}
+
+.calculator .buttons .nine {
+    grid-area: nine;
+}
+
+.calculator .buttons .plus {
+    grid-area: plus;
+}
+
+
+.calculator .buttons .four {
+    grid-area: four;
+}
+
+.calculator .buttons .five {
+    grid-area: five;
+}
+
+.calculator .buttons .six {
+    grid-area: six;
+}
+
+.calculator .buttons .min {
+    grid-area: min;
+}
+
+
+.calculator .buttons .one {
+    grid-area: one;
+}
+
+.calculator .buttons .two {
+    grid-area: two;
+}
+
+.calculator .buttons .three {
+    grid-area: three;
+}
+
+.calculator .buttons .equal {
+    grid-area: equal;
+}
+
+.calculator .buttons .zero {
+    grid-area: zero;
+    border-bottom-left-radius: 20px;
+}
+
+.calculator .buttons .point {
+    grid-area: point;
+}
+
+.calculator .buttons div {
+    padding: 10px;
+    text-align: center;
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.calculator .buttons div:active {
+    border: 1px solid var(--main-border);
+}
+
+.calculator .buttons .num {
+    background-color: var(--num-bg-color);
+    color: var(--num-txt-color);
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin: 4px;
+    box-shadow: 0px 0px 15px 3px rgba(198, 221, 249, 0.38);
+
+}
+
+.calculator .buttons .num:hover {
+    background-color: #fcfcfc57;
+    transform: scale(1.1,1.1);
+}
+
+.calculator .buttons .operator {
+    background-color: var(--operator-bg-color);
+    color: var(--operator-txt-color);
+    border-radius: 20px;
+    margin: 2px;
+    background-color: #ffffff;
+    color: rgb(228, 112, 160);
+    box-shadow: 0px 0px 15px 3px rgba(198, 221, 249, 0.38);
+}
+
+
+.calculator .buttons .equal {
+    background-color: var(--equl-bg-color);
+    color: var(--operator-txt-color);
+    border-bottom-right-radius: 20px;
+    border-radius: 20px;
+    margin: 4px;
+    box-shadow: #f0bb1e3a 0px 0px 15px 4px;
+
+}
+
+.calculator .buttons .equal:hover {
+    background-color: #ffab04;
+    border: #b99f9f 1px  solid;
+
+}
+.calculator .buttons .C{
+    border-radius: 20px;
+    margin: 6px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 15px 3px rgba(198, 221, 249, 0.38);
+    color: #5a97e6d2;
+
+
+
+}
+.calculator .buttons .operator:hover,
+.calculator .buttons .C:hover {
+    box-shadow: 0px 0px 15px 5px rgba(238, 179, 217, 0.19);
+    color: rgb(228, 112, 160);
+
+}
+
+@media (max-width: 530px) {
+    .calculator {
+        width: 100%;
+        top: unset;
+        left: unset;
+        grid-template-rows: 200px 50vh;
+        border-radius: 0;
+        bottom: 0;
+        transform: unset;
+        -webkit-transform: unset;
+        -moz-transform: unset;
+        -ms-transform: unset;
+        -o-transform: unset;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+    }
+
+    .calculator .buttons div {
+        border-radius: 0 !important;
+    }
+}
